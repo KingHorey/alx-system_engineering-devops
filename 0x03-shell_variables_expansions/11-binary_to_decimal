@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "ibase=BINARY;obase=8;10" | bc -l
+echo $((2#$BINARY))
