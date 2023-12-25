@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Prints I am invicible when a SIGTERM is received
+
+kill -9 "$(pgrep -f 7-highlander)"
+

@@ -1,0 +1,23 @@
+In the two server infrastructure
+
+A load balance was added in order to improve scalability, reduce load that was previously placed on the server in the one server model and also to reduce downtime as during maintenance the second server can be used while the first is being updated
+
+The load balancer makes use of the least connection algorithm, this algorithm ginds the server that has the least number of connections in a cluster of servers and serves the request to that server. This way no server has too much workload placed on it.
+
+The load balance makes use of Active-passive setup and not the active-active setup.Active-active setup makes use of both servers simultaneously, reading and writing to the database as requests is received. However, unlike the active-active setup, the active-passive setup makes use of one server to update the database, however, backups are made at specified intervals to the other database so that information is retained. And in the event of downtime, the active-passive setup when configured with log shiping and failover switched to the passive database and makes it the primary database for servers to write and read information from
+
+Primary-Replica (Master-Slave) cluster
+
+A primary-replica cluster works in a way that the primary server is responsible for reading and writing to the database. The replicas otherwise called slaves are responsible for updating the database information that was written by the primary server.
+
+One difference between the two is in terms of operation, the primary server writes to the database while the replica takes the information written and updates it to the database
+
+
+In the two server infrastructure, the issues that abound are:
+
+SPOF - The web infrastructure has only one load-balancing algorithm implemented and has lesser fault tolerance
+Another is the number of servers, the least connection algorithm works best when there are multiple serves so that at any point in time, one server would have less requests being served. However in this implementation, there are only two servers andthere is every possibility that both have the same amount of requests and this would lead to downtime as incoming requests would have to be put on hold till other requests have been served
+
+The web infrastructure also does not have a firewall implemented and as such, data breaches, and malicious sites have easy access to both the server and the client
+
+The infrastructure does not have monitoring implemented and if there is too much workload on one server, it cannot be tracked. Also, other vital information cannot be retrived.

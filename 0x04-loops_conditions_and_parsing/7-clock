@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# displayes the time from hour 0 til 12
+function hours() {
+	local hour=0
+	return $hour
+}
+
+
+function minutes() {
+	minute=1
+	hours
+	hour_count=$?
+	while [ $hour_count -le 12 ]
+	do
+		echo "Hour: $hour_count"
+		while [ $minute -le 59 ]
+		do
+			echo $minute
+			minute=$((minute+1))
+		done
+		minute=1
+		hour_count=$((hour_count+1))
+	done
+}
+minutes

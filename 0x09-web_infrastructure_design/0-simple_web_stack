@@ -1,0 +1,33 @@
+A server in quite simple terms is a computer that carries out services to other computers over a network
+
+What differentiates a server from the everyday personal computer is:
+1. The operating system 
+2. Hardware
+
+Question: What is the role of the domain name?
+Answer: The domain name is a simple to use and "remembrable" way to connect to websites. Since websites are in IP address and cannot easily be remembered, domain names is the alternative to connecting to a website
+
+Question: What type of DNS record is www in www.foobar.com
+Answer: WWW in the domain name is a WWW record, which is a subdomain to the root domain to foobar.com
+
+Question: What is the role of the web server?
+Answer: The web server serves HTTP requests from the client to the approriate web applications, it then receives these responses from the servers and send to the browser so it can be displayed.
+
+Question: What is the role of the application server?
+Answer: The application differs from the web server in that it serves business logic so certain functionalities needed can be performed
+
+Question: What is the role of the database?
+Answer: The database is a systematic arrangement of data so it can be easily retrieved, managed. In a web infrastructure, the database is responsible for storing user information and for retrival, modification, deletion among others
+
+Question: What is the server using to communicate with the computer of the user requesting the website
+Answer: The server used HTTP protocol to communicate with the user's browser
+
+
+Issues with a one server infrastructure
+
+SPOF (Single point of failure) - in this inrasture model, thereis no allocat'ion for redundancy and also, a failure at any point in the inrasture leands to considerable downtime which is detrimental. For better performance and high availability systems, other servers and databases can be put in place.
+
+Downtime when maintenance is needed with this infrastructure is not optimal, this is majorly due to the point pointed out earlier. For systems that have lower downtime, redundancy is a major player. 
+One way is to have at least two servers and databases so that in the case of a maintenance procedure, log shipping and failover techniques can be put in place. This ensure there is no downtime and services are all still rendered
+
+The one server infrastructure does not have a load balancing algorithm implemented and also has only one server that could be serving multiple users and as such once the load on the server becomes too much, there would be considerable downtime, the web servers would also no longer be scalable

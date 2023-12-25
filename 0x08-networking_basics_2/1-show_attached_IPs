@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# displays all ipv4 address on the network
+
+netstat -4 -nr | awk '/1/{print $1}'

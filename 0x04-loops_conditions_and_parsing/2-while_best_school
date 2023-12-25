@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# while loop
+while_loop() {
+	i=1
+	while test $i -le 10 
+	do
+		echo "Best School"
+		i=$((i+1))
+	done
+}
+
+while_loop

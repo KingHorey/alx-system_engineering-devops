@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Script send to stdout the pid and name of a process
+pgrep -xl bash

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Script shows all process with the bash word
+ps -auxf | grep bash

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Prints I am invicible when a SIGTERM is received
+
+
+function sig_term {
+	echo "I am invincible!!!"
+}
+
+trap sig_term SIGTERM
+#prints message after 2 seconds
+function inifinite_loop {
+	while true
+	do
+		echo "To infinity and beyond"
+		sleep 2
+	done
+}
+
+inifinite_loop

@@ -1,0 +1,14 @@
+In this three-server infrastructure, the following were added
+ 1. 3 firewalls
+ 2. 1 SSL certificate
+ 3. 3 monitoring clients
+
+The firewalls were added to protect from malicious websites and to also prevent breach of data by these websites
+
+Also, the firewalls restrict access to certain web addresses that have been added to the blacklist and as such these addresses have been marked as malicious and therefore will not be accessible.
+
+A SSL/TSL cerficate is used in order to protect user data across the web. Unlike the HTTP that can easily be tampered with, HTTPS adds a secure layer on HTTP and as such user data is better protected over the web.
+Once a user provides a web address, the domain name service looks up the domain name and provides the I.P address, the web browser then connects to the I.P address, if it has a SSL certicate connection is established to the server
+
+
+Monitoring set up on the web monitors the servers and generates a report that the web expert can use in making plans to the server. Stats like number of requests, how the load balancer shares these requests and also others like CPU monitoring, average session of each request are monitored by the monitoring tool

@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# loop with conditional
+function conditional_loop {
+	i=1
+	while test $i -le 10;
+	do
+		echo "Best School"
+		i=$((i+1))
+	if [ $i -eq 9 ]
+	then
+		echo "Best School"
+		echo "Hi"
+		i=$((i+1))
+	fi
+	done
+}
+conditional_loop
