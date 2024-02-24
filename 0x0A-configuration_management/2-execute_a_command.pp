@@ -5,4 +5,5 @@ exec {'killmenow':
   onlyif  => 'pgrep killmenow',
   path    => '/usr/bin:/bin',
   provider => 'shell',
+  returns => [0, 1],
 }
