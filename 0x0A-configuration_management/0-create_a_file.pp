@@ -1,4 +1,4 @@
-create school under /tmp/
+# create school under /tmp/
 
 file { '/tmp/school':
   ensure  => 'present',
