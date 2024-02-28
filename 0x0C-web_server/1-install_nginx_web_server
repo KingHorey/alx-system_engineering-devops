@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # configure nginx block
 sudo apt update -y && sudo apt upgrade && sudo apt install nginx -y
-sudo echo "Hello World!" > /var/www/html/index.html
+sudo echo "Hello World!" | tee /var/www/html/index.html
 sudo service nginx start || sudo service nginx restart
