@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
 # configure nginx block
-
-cat config.txt >> /etc/nginx/default // use sed or something to insert into a particular line
-touch /var/www/html/index.html
-echo "Hello World" > /var/www/html/index.html
-sed -i '23i\    root /var/www/html/index.html' /etc/nginx/sites-available/default
-
+echo "Hello world" > /usr/share/nginx/html/index.html
 service nginx restart
