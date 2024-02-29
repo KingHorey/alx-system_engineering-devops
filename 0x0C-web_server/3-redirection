@@ -3,6 +3,7 @@
 
 apt update -y && apt upgrade -y
 apt install nginx -y
+rm /var/www/html/*
 service nginx start
 sed -i '47a\	rewrite ^/redirect_me / permanent;'/etc/nginx/site-available/default
 service nginx restart || service nginx start
