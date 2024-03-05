@@ -10,6 +10,9 @@ echo "Hello World!" > /var/www/html/index.html
 sudo sed -i '43i\	error_page 404 /404.html;' /etc/nginx/sites-available/default
 
 echo "Ceci n'est pas une page" > /var/www/html/404.html
-sed -i '48a\	rewrite ^/redirect_me / permanent;'/etc/nginx/site-available/default
-sed -i "52a\       add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
+sed -i '48a\	rewrite ^/redirect_me / permanent;' /etc/nginx/sites-available/default
+
+export response
+response=$(grep -n 'location / {' /etc/nginx/sites-available/default | head -1| cut -f 1| cut -c '1-2')
+sed -ie "${response}a\	\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
 service nginx restart
