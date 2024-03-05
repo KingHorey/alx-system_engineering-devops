@@ -4,4 +4,4 @@
 apt update -y
 apt install nginx
 
-sed -i '50a\       add_header X-Served-by "$HOSTNAME";' /etc/nginx/sites-available/default
+sed -i "50a\       add_header X-Served-by ($HOSTNAME);" /etc/nginx/sites-available/default
