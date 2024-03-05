@@ -11,5 +11,5 @@ sudo sed -i '43i\	error_page 404 /404.html;' /etc/nginx/sites-available/default
 
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 sed -i '48a\	rewrite ^/redirect_me / permanent;'/etc/nginx/site-available/default
-sed -i "52a\       add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+sed -i "52a\       add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-enabled/default
 service nginx restart
