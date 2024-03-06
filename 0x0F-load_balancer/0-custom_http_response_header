@@ -1,18 +1,37 @@
 #!/usr/bin/env bash
 # setup Nginx and create custom header
+if [ $EUID -eq 0 ];
+then	
+	apt update -y
+	apt install nginx -y
 
-apt update -y
-apt install nginx
+	rm /var/www/html/*
+	echo "Hello World!" > /var/www/html/index.html
 
-rm /var/www/html/*
-echo "Hello World!" > /var/www/html/index.html
+	sudo sed -i '43i\	error_page 404 /404.html;' /etc/nginx/sites-available/default
 
-sudo sed -i '43i\	error_page 404 /404.html;' /etc/nginx/sites-available/default
+	echo "Ceci n'est pas une page" > /var/www/html/404.html
+	sed -i '48a\	rewrite ^/redirect_me / permanent;' /etc/nginx/sites-available/default
 
-echo "Ceci n'est pas une page" > /var/www/html/404.html
-sed -i '48a\	rewrite ^/redirect_me / permanent;' /etc/nginx/sites-available/default
+	export response
+	response=$(grep -n 'location / {' /etc/nginx/sites-available/default | head -1| cut -f 1| cut -c '1-2')
+	sed -ie "${response}a\	\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+	service nginx restart
+else
+	sudo apt update -y
+	sudo apt install nginx -y
+	rm /var/www/html/*
+	echo "Hello World!" > /var/www/html/index.html
 
-export response
-response=$(grep -n 'location / {' /etc/nginx/sites-available/default | head -1| cut -f 1| cut -c '1-2')
-sed -ie "${response}a\	\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
-service nginx restart
+	sudo sed -i '43i\	error_page 404 /404.html;' /etc/nginx/sites-available/default
+
+	echo "Ceci n'est pas une page" > /var/www/html/404.html
+	sed -i '48a\	rewrite ^/redirect_me / permanent;' /etc/nginx/sites-available/default
+
+	export response
+	response=$(grep -n 'location / {' /etc/nginx/sites-available/default | head -1| cut -f 1| cut -c '1-2')
+	sed -ie "${response}a\	\tadd_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default
+	sudo service nginx restart
+fi
+
+
