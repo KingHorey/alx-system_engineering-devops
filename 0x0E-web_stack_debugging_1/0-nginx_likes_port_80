@@ -4,7 +4,7 @@
 # install ufw, kmod
 
 sudo apt-get update -y
-sudo apt-get install ufw kmod nginx
+sudo apt-get install ufw kmod nginx -y
 
 sudo service nginx start
 sudo service ufw start
