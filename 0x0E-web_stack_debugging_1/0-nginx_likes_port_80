@@ -7,7 +7,13 @@ sudo apt-get update -y
 sudo apt-get install ufw kmod nginx -y
 
 sudo service nginx start
-sudo service ufw start
+sudo ufw enable
+sudo ufw start
 
 sudo ufw allow 80/tcp
 sudo ufw allow 80/udp
+
+sudo ufw allow 'Nginx HTTP'
+sudo ufw allow 'Nginx HTTPS'
+
+sudo ufw reload
