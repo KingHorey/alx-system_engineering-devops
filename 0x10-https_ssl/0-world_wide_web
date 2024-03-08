@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Displays information about what subdomain is queried
+
+display()
+{
+	if [ "$#" -eq 2 ];
+then
+	export subdomain="$2";
+	export domain="$1";
+	dig "$subdomain.$1" | grep -A1 "ANSWER SECTION" | tail -n1 | awk '{ 
+	printf "The subdomain %s is a %s record and points to %s", "'$subdomain'" , $4, $5 
+	}';
+elif [ "$#" -eq 1 ];
+then
+	export subdomains="www lb-01 web-01 web-02"
+	export domain="$1";
+	for subdomain in $subdomains;
+	do
+		dig "$subdomain.$1" | grep -A1 "ANSWER SECTION" | tail -n1 | awk '{
+			printf "The subdomain %s is a %s record and points to %s\n", "'$subdomain'", $4, $5 
+		}';
+	done
+fi
+}
+
+display "$@";
+
+
