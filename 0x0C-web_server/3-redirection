@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Use sed to configure file for permanent redirect
 
-sudo apt update -y && apt upgrade -y
-sudo apt install nginx -y
+sudo apt-get update -y && apt-get upgrade -y
+sudo apt-get install nginx -y
 sed -i '47a\	rewrite ^/redirect_me / permanent;'/etc/nginx/site-available/default
 sudo service nginx start
 sudo service nginx reload
