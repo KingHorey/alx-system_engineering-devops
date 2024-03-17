@@ -7,21 +7,27 @@ then
 	# check if nginx is installed
 	apt list --installed | grep -i nginx || install_nginx
 
-	# create custom 404 page
+	# check if 404.html exists
+	[ -f /var/www/html/404.html ] && rm /var/www/html/404.html
+	# create 404.html
 	touch /var/www/html/404.html
-	echo "Ceci n'est pas une page." | tee /var/www/html/404.html
+	echo "Ceci n'est pas une page." | tee -a /var/www/html/404.html
 
 	#configure nginx to serve custom error pages
 	
-	sed -ie '48a\	error_page 404 /404.html;' /etc/nginx/sites-available/default
-	rm /etc/nginx/sites-available/default
-	ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+	export number
+	number=$(grep -n "server_name" /etc/nginx/sites-available/default | head -1 | cut -d ":" -f 1)
+	
+	sed -i ''"${number}"'a\ \t\terror_page 404 /404.html;' /etc/nginx/sites-available/default
+	
+	rm /etc/nginx/sites-enabled/default
+	ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 	# restart nginx
 	service nginx restart
 fi
 
 install_nginx(){
-	apt update -y
-	apt install nginx -y
+	apt-get update -y
+	apt-get install nginx -y
 }
