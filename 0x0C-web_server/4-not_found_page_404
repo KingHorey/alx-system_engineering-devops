@@ -18,7 +18,7 @@ then
 	export number
 	number=$(grep -n "server_name" /etc/nginx/sites-available/default | head -1 | cut -d ":" -f 1)
 	
-	sed -i ''"${number}"'a\ \t\terror_page 404 /404.html;' /etc/nginx/sites-available/default
+	sed -i ''"${number}"'a\ \t\terror_page 404 /404.html;\nlocation = /404/html {\n\troot /usr/share/nginx/html; internal;\n\t}' /etc/nginx/sites-available/default
 	
 	rm /etc/nginx/sites-enabled/default
 	ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
