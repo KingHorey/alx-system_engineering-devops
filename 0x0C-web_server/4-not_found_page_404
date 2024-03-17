@@ -9,6 +9,7 @@ then
 
 	# create custom 404 page
 	touch /var/www/html/404.html
+	echo "Ceci n'est pas une page." | tee /var/www/html/404.html
 
 	#configure nginx to serve custom error pages
 	
