@@ -12,6 +12,7 @@ To install ufw on Debian based systems
 ``
     sudo apt update -y
 ``
+
 ``
     sudo apt install ufw
 ``
