@@ -16,8 +16,10 @@ sed -i 's/listen 80 default_server/listen 8080 default_server/' /etc/nginx/sites
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 # add nginx user to root group
-sudo usermod -a -G www-data nginx
-sudo chown -R nginx:root /etc/nginx/
-sudo chown -R nginx:root /var/log/nginx/
+sudo chown -R nginx:nginx /etc/nginx/
+sudo chown -R nginx:nginx /var/log/nginx/
 
-service nginx restart
+find / -name "nginx" -exec chown -R nginx:nginx {} \;
+sudo find / -name "nginx.pid" -exec chown -R nginx:nginx {} \;
+
+su nginx -c /etc/nginx/nginx.conf
