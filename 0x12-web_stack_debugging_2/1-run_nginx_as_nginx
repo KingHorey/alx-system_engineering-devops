@@ -14,8 +14,11 @@ export number
 number=$(grep -n 'listen 80 default_server' /etc/nginx/sites-available/default | head -1 | cut -d: -f1)
 sed -i "${number}a\    listen 8080 default_server;" /etc/nginx/sites-available/default
 
+# delete old sites-enabled/default file
+sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+
 # add nginx user to root group
-sudo usermod -a -G root nginx
+sudo usermod -a -G www-data nginx
 sudo chown -R nginx:root /etc/nginx/
 sudo chown -R nginx:root /var/log/nginx/
 
