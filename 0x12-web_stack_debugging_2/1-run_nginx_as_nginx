@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# make Nginx only run with user nginx
+
+sudo apt-get update -y
+sudo apt-get install -y nginx
+
+# create user nginx
+useradd nginx
+service nginx stop
+sudo sed -i '1c\ user nginx' /etc/nginx/nginx.conf
+
+#add listening on port 8080
+export number
+number=$(grep -n 'listen 80 default_server' /etc/nginx/sites-available/default | head -1 | cut -d: -f1)
+sed -i "${number}a\    listen 8080 default_server;" /etc/nginx/sites-available/default
+
+# add nginx user to root group
+sudo usermod -a -G root nginx
+sudo chown -R nginx:root /etc/nginx/
+sudo chown -R nginx:root /var/log/nginx/
+
+service nginx restart
