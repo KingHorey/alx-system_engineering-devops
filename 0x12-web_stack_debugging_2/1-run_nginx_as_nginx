@@ -1,18 +1,16 @@
 #!/usr/bin/env bash
 # make Nginx only run with user nginx
 
-sudo apt-get update -y
-sudo apt-get install -y nginx
-
 # create user nginx
 useradd nginx
 service nginx stop
-sudo sed -i '1c\ user nginx' /etc/nginx/nginx.conf
+sudo sed -i '1c\user nginx;' /etc/nginx/nginx.conf
 
-#add listening on port 8080
-export number
-number=$(grep -n 'listen 80 default_server' /etc/nginx/sites-available/default | head -1 | cut -d: -f1)
-sed -i "${number}a\    listen 8080 default_server;" /etc/nginx/sites-available/default
+# backup old config file
+sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+# add listen 8080 default_server to default file
+sed -i 's/listen 80 default_server/listen 8080 default_server/' /etc/nginx/sites-available/default
 
 # delete old sites-enabled/default file
 sudo ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
