@@ -31,7 +31,7 @@ def gather_data():
         i = 0
         while (i < len(tasks_title)):
             if i == len(tasks_title) - 1:
-                print("\t ", tasks_title[i]) 
+                print("\t ", tasks_title[i])
             else:
                 print("\t ", tasks_title[i], end="\n")
             i += 1
