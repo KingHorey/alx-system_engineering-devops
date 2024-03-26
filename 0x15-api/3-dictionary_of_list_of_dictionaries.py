@@ -24,7 +24,7 @@ def gather_data():
         """ write to CSV """
 
         for u_id in ids:
-            name = req.get(user_url, params={'id': user_id})
+            name = req.get(user_url, params={'id': u_id})
             name = name.json()[0].get('username')
             todo = f"https://jsonplaceholder.typicode.com/users/{u_id}/todos"
             users_data = req.get(todo, params={'userId': u_id}).json()
@@ -34,7 +34,7 @@ def gather_data():
                                  "task": data.get('title'),
                                   "completed": data.get('completed')})
                 tasks_title.extend(temp_list)
-                users_dict_data[user_id] = tasks_title
+                users_dict_data[u_id] = tasks_title
                 tasks_title = []
 
         with open(f"todo_all_employees.json", 'w') as file:
