@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 
 """ import requests """
+
+import csv
 import requests as req
 import sys
-import csv
 
 
 def gather_data():
