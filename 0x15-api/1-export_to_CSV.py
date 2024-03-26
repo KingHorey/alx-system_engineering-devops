@@ -23,7 +23,7 @@ def gather_data():
         unfinished_tasks = 0
         tasks_title = []
         """ write to CSV """
-        with open("USER_ID.csv", mode='w') as f:
+        with open(f"{user_id}.csv", mode='w') as f:
             writer = csv.writer(f, delimiter=',', quotechar='"',
                                 quoting=csv.QUOTE_ALL)
             for data in data.json():
