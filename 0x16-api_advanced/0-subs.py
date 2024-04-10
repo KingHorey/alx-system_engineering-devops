@@ -4,13 +4,12 @@
 """ import requests module """
 
 import requests
-import sys
 
 
-def number_of_subscribers():
+def number_of_subscribers(subreddit):
     """ function that eries the Reddit API and returns the number of
     subscribers """
-    subrdt = sys.argv[1]
+    subrdt = subreddit
     url = 'https://www.reddit.com/r/{}/about.json'.format(subrdt)
     headers = {'User-Agent': 'Mozilla/5.0'}
     response = requests.get(url, headers=headers, allow_redirects=False)
