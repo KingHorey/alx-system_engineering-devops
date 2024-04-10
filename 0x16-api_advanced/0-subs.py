@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-""" import requests module """
+""" import requests module for making HTTP requests """
 
 import requests
 
@@ -17,4 +17,6 @@ def number_of_subscribers(subreddit):
         return 0
     else:
         data = response.json().get('data').get('subscribers')
+        if data is None:
+            return 0
         return data
