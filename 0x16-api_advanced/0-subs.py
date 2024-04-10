@@ -18,7 +18,3 @@ def number_of_subscribers(subreddit):
     else:
         data = response.json().get('data').get('subscribers')
         return data
-
-
-if __name__ == '__main__':
-    print(number_of_subscribers())
