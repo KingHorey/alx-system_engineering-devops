@@ -1,8 +1,5 @@
 #!/usr/bin/python3
-
-
 """ import requests module for making HTTP requests """
-
 import requests
 
 
