@@ -1,7 +1,7 @@
 # My First PostMortem
 
 
-![Calma] (https://www.google.com/url?sa=i&url=https%3A%2F%2Fimgur.com%2Ft%2Fburning%2FrixnjL5&psig=AOvVaw3UtYG4Q-V6PtXwlirdkOBb&ust=1713211031679000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKi5rty-woUDFQAAAAAdAAAAABAE)
+![Calma](https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/GDYNMQ6LMBGZFAZ5UBV2FOJZBM.jpeg&w=1200)
 
 ## Introduction
 
