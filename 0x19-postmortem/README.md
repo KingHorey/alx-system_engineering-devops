@@ -1,5 +1,8 @@
 # My First PostMortem
 
+
+![Calma] (https://www.google.com/url?sa=i&url=https%3A%2F%2Fimgur.com%2Ft%2Fburning%2FrixnjL5&psig=AOvVaw3UtYG4Q-V6PtXwlirdkOBb&ust=1713211031679000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKi5rty-woUDFQAAAAAdAAAAABAE)
+
 ## Introduction
 
 While a postmortem covers service outage and it's effect on the service provided and also on customer's accessing the service. This README covers an imaginary outage
