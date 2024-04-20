@@ -23,6 +23,7 @@ server {
 	listen [::]:80 default_server;
 	listen [::]:5000;
 	listen [::]:5001;
+	listen [::]:5003;
 	# SSL configuration
 	#
 	# listen 443 ssl default_server;
