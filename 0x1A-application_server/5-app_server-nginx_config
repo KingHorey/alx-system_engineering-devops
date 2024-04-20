@@ -50,8 +50,11 @@ server {
 	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 
 	location / {
-		alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static/scripts;
 		proxy_pass http://127.0.0.1:5003;
+	}
+
+	location /static/ {
+		alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static/scripts;
 	}
 
  	location /hbnb_static/ {
@@ -113,4 +116,3 @@ server {
 #		try_files $uri $uri/ =404;
 #	}
 #}
-
